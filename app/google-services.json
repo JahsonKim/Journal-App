@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "4487664316",
+    "firebase_url": "https://journal-app-208320.firebaseio.com",
+    "project_id": "journal-app-208320",
+    "storage_bucket": "journal-app-208320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4487664316:android:a13acfceb200ddb8",
+        "android_client_info": {
+          "package_name": "com.oceanscan.journal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4487664316-sbifkvlkilrbvpc77j91a6fta5a4t1vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnpW0VyEhr7lpAeVW3_8YisnHH9Drkwnk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

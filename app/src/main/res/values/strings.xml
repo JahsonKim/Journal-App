@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Journal App</string>
+
+    <string name="slide_1_title">Journal App</string>
+    <string name="slide_1_desc">Keep your notes safe.</string>
+
+    <string name="slide_2_title">Journal App</string>
+    <string name="slide_2_desc">Keep your notes safe.</string>
+
+    <string name="slide_3_title">Journal App</string>
+    <string name="slide_3_desc">Keep your notes safe.</string>
+
+    <string name="done">Done</string>
+</resources>
