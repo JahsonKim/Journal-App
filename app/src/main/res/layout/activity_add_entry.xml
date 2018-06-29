@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@null"
+        android:textStyle="bold"
+        android:inputType="textCapSentences"
         android:hint="Title"
         android:padding="@dimen/text_padding" />
 
@@ -31,6 +33,8 @@
         android:layout_below="@+id/title"
         android:background="@null"
         android:hint="Content"
+        android:inputType="textCapSentences"
+        android:fontFamily="sans-serif"
         android:linksClickable="true"
         android:padding="@dimen/text_padding" />
 

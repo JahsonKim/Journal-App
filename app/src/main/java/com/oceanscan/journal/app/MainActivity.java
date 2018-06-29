@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.oceanscan.journal.app.adapter.NotesAdapter;
 import com.oceanscan.journal.app.data.DatabaseHelper;
 import com.oceanscan.journal.app.model.Note;
+import com.oceanscan.journal.app.utils.Constants;
 import com.oceanscan.journal.app.utils.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView noteRecyclerView;
     private DatabaseHelper mDb;
     FloatingActionButton add;
+    List<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDb = DatabaseHelper.getAppDatabase(this);
 
+        //TODO refresh notes list after adding.
+        //TODO connect to firebase db
+        //TODO use esspresso
+        //TODO fine tune the app intro flipper
 
         add = (FloatingActionButton) findViewById(R.id.add_note);
         add.setOnClickListener(new View.OnClickListener() {
@@ -48,13 +54,20 @@ public class MainActivity extends AppCompatActivity {
         noteRecyclerView.setItemAnimator(new DefaultItemAnimator());
         noteRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(MainActivity.this));
 
-        List<Note> notes = new ArrayList<>();
+        notes = new ArrayList<>();
         notes = mDb.notesDao().getAllNotes();
         noteRecyclerView.setAdapter(new NotesAdapter(getApplicationContext(), notes));
 
         noteRecyclerView.addOnItemTouchListener(new NotesAdapter.RecyclerTouchListener(getApplicationContext(), noteRecyclerView, new NotesAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
+                Note note = notes.get(position);
+                Intent intent = new Intent(getApplicationContext(), AddEntryActivity.class);
+                intent.putExtra(Constants.Extras.TITLE, note.title);
+                intent.putExtra(Constants.Extras.CONTENT, note.content);
+                intent.putExtra(Constants.Extras.JOURNAL_ID, note.noteId);
+                intent.putExtra(Constants.Extras.DATE_CREATED, note.getUpdatedOn());
+                startActivity(intent);
 
             }
 

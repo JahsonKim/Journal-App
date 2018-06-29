@@ -4,6 +4,11 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Entity(tableName = "Notes")
 public class Note {
     @PrimaryKey(autoGenerate = true)
@@ -75,5 +80,16 @@ public class Note {
 
     public void setUpdatedOn(long updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("noteId", noteId);
+        result.put("title", title);
+        result.put("content", content);
+        result.put("updated", updatedOn);
+
+        return result;
     }
 }

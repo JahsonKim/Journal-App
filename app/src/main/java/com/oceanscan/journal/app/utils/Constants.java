@@ -16,4 +16,12 @@ public class Constants {
     public static final  String CLIENT_ID="4487664316-sbifkvlkilrbvpc77j91a6fta5a4t1vv.apps.googleusercontent.com";
 
     public static final String DATABASE = "journal";
+
+    public static class Extras{
+        public static final String JOURNAL_ID = "id";
+        public static final String TITLE = "title";
+        public static final String CONTENT = "content";
+        public static final String DATE_CREATED = "dateCreated";
+
+    }
 }

@@ -15,7 +15,7 @@ public interface NotesDao {
     @Query("SELECT * FROM Notes")
     List<Note> getAllNotes();
 
-    @Query("SELECT * FROM Notes where noteId = :noteId")
+    @Query("SELECT * FROM Notes where noteId = :noteId order by updated desc")
     Note getNoteById(int noteId);
 
 
@@ -24,4 +24,6 @@ public interface NotesDao {
 
     @Delete
     void delete(Note note);
+    @Query("UPDATE Notes SET title=:title,content=:content,updated=:updatedOn WHERE noteId = :noteId")
+    void update(String title,String content,long updatedOn, String noteId);
 }
