@@ -7,11 +7,18 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.oceanscan.journal.app.adapter.NotesAdapter;
 import com.oceanscan.journal.app.data.DatabaseHelper;
 import com.oceanscan.journal.app.model.Note;
+import com.oceanscan.journal.app.utils.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         noteRecyclerView.setLayoutManager(layoutManager);
         noteRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        noteRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(MainActivity.this));
 
-      List<Note> notes = new ArrayList<>();
+        List<Note> notes = new ArrayList<>();
         notes = mDb.notesDao().getAllNotes();
         noteRecyclerView.setAdapter(new NotesAdapter(getApplicationContext(), notes));
 
@@ -55,5 +63,25 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_logout) {
+            //logout
+
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

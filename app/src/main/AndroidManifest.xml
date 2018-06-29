@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".AddEntryActivity"></activity>
+        <activity android:name=".AddEntryActivity"
+            android:label="@string/create_note"></activity>
     </application>
 
 </manifest>

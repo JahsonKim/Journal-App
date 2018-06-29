@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.oceanscan.journal.app.R;
 import com.oceanscan.journal.app.model.Note;
+import com.oceanscan.journal.app.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
         holder.title.setText(note.getTitle());
         holder.content.setText(note.getContent());
-        holder.updatedOn.setText(String.valueOf(note.getUpdatedOn()));
+        holder.updatedOn.setText(DateUtils.formatDate(mContext,note.getUpdatedOn()));
 
 
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/fab_margin"
     tools:context=".AddEntryActivity">
 
     <EditText
@@ -12,7 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@null"
-        android:hint="Title" />
+        android:hint="Title"
+        android:padding="@dimen/text_padding" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/title"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/list_divider"></View>
 
     <EditText
         android:id="@+id/content"
@@ -21,7 +31,8 @@
         android:layout_below="@+id/title"
         android:background="@null"
         android:hint="Content"
-        android:linksClickable="true" />
+        android:linksClickable="true"
+        android:padding="@dimen/text_padding" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +42,8 @@
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_toLeftOf="@+id/updated_on"
         android:padding="@dimen/text_padding"
-        android:text="Updated:" />
+        android:text="Updated:"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/updated_on"
@@ -41,6 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/fab_margin"
         android:padding="@dimen/text_padding"
-        android:text="moments ago" />
+        android:text="moments ago"
+        android:visibility="gone" />
 
 </RelativeLayout>

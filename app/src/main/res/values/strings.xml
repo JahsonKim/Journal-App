@@ -10,5 +10,13 @@
     <string name="slide_3_title">Journal App</string>
     <string name="slide_3_desc">Keep your notes safe.</string>
 
+    <string name="logout">Logout</string>
     <string name="done">Done</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="create_note">Create Note</string>
+
+
+    <string name="sign_up_with_google">Sign up with Google to continue.</string>
+
 </resources>
