@@ -33,7 +33,10 @@
         android:layout_below="@+id/title"
         android:background="@null"
         android:hint="Content"
-        android:inputType="textCapSentences"
+        android:gravity="top"
+        android:textSize="@dimen/normal_text_size"
+        android:minLines="10"
+        android:inputType="textCapSentences|textMultiLine"
         android:fontFamily="sans-serif"
         android:linksClickable="true"
         android:padding="@dimen/text_padding" />

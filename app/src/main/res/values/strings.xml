@@ -2,13 +2,13 @@
     <string name="app_name">Journal App</string>
 
     <string name="slide_1_title">Journal App</string>
-    <string name="slide_1_desc">Keep your notes safe.</string>
+    <string name="slide_1_desc">Save your ideas wherever you are.</string>
 
     <string name="slide_2_title">Journal App</string>
-    <string name="slide_2_desc">Keep your notes safe.</string>
+    <string name="slide_2_desc">Capture whats in your mind.</string>
 
     <string name="slide_3_title">Journal App</string>
-    <string name="slide_3_desc">Keep your notes safe.</string>
+    <string name="slide_3_desc">Share your ideas with everyone.</string>
 
     <string name="logout">Logout</string>
     <string name="done">Done</string>
@@ -17,6 +17,6 @@
     <string name="create_note">Create Note</string>
 
 
-    <string name="sign_up_with_google">Sign up with Google to continue.</string>
+    <string name="sign_up_with_google">Sign up with Google to get Started.</string>
 
 </resources>

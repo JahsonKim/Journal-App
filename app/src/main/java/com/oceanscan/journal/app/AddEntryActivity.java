@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,12 +43,17 @@ public class AddEntryActivity extends AppCompatActivity {
     String noteId;
 
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    FirebaseUser user;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
         mDb = DatabaseHelper.getAppDatabase(this);
 
@@ -54,7 +61,10 @@ public class AddEntryActivity extends AppCompatActivity {
         content = (EditText) findViewById(R.id.content);
         updatedOn = (TextView) findViewById(R.id.updated_on);
 
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
+//        if (mDatabase != null)
+//            mDatabase.getDatabase().setPersistenceEnabled(true);
 
         //check if intent has extras
         if (getIntent().hasExtra(Constants.Extras.TITLE)) {
@@ -73,6 +83,8 @@ public class AddEntryActivity extends AppCompatActivity {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(final Void... params) {
+                Note note = new Note(id, title, content, System.currentTimeMillis());
+                createNewNoteFirebase(note);
 
                 mDb.notesDao().update(title, content, System.currentTimeMillis(), id);
 //                List<Note> notes = mDb.notesDao().getAllNotes();
@@ -114,16 +126,9 @@ public class AddEntryActivity extends AppCompatActivity {
     }
 
     private void createNewNoteFirebase(Note note) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
-        String key = mDatabase.child("notes").push().getKey();
-        Map<String, Object> postValues = note.toMap();
 
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/posts/" + key, postValues);
-        childUpdates.put("/user-posts/" + note.noteId + "/" + key, postValues);
+        mDatabase.child("notes").child(user.getUid()).child(note.noteId).setValue(note);
 
-        mDatabase.updateChildren(childUpdates);
     }
 
     @Override

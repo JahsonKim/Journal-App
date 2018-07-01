@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private MyPreferences prefManager;
     private FirebaseAuth mAuth;
     ProgressBar bar;
-   SignInButton signInButton;
+    SignInButton signInButton;
 
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -70,8 +70,9 @@ public class LoginActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        bar=(ProgressBar)findViewById(R.id.progress_bar);
-        signInButton=(SignInButton)findViewById(R.id.sign_in_button);
+
+        bar = (ProgressBar) findViewById(R.id.progress_bar);
+        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,15 +110,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Log.i(TAG,currentUser.getDisplayName());
-        Log.i(TAG,currentUser.getEmail());
-        Log.i(TAG,currentUser.getUid());
-        Log.i(TAG,currentUser.getPhoneNumber());
+//        Log.i(TAG,currentUser.getDisplayName());
+//        Log.i(TAG,currentUser.getEmail());
+//        Log.i(TAG,currentUser.getUid());
+//        Log.i(TAG,currentUser.getPhoneNumber());
 
     }
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
+        Log.i(TAG, "adding dot "+currentPage);
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -128,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
             dots[i].setTextColor(colorsInactive[currentPage]);
+            dots[i].bringToFront();
             dotsLayout.addView(dots[i]);
         }
 
@@ -241,7 +244,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.i(TAG,"Task "+task.getException()+"\n"+task.getResult());
+                        Log.i(TAG, "Task " + task.getException() + "\n" + task.getResult());
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             launchHomeScreen();
