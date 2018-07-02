@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+       FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mDb = DatabaseHelper.getAppDatabase(this);
         preferences = new MyPreferences(MainActivity.this);
 
