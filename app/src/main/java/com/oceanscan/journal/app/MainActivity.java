@@ -29,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.oceanscan.journal.app.adapter.NotesAdapter;
 import com.oceanscan.journal.app.data.DatabaseHelper;
@@ -112,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         DatabaseReference myRef = database.getReference("notes").child(user.getUid());
+
+//        Query queryRef = myRef.child(user.getUid()).orderByChild("title").equalTo("Croatia vs Denmark")
+//                .orderByChild("id").equalTo(1);
+
+                //.orderByChild("title").equalTo("Croatia vs Denmark");
        // myRef.child(user.getUid());
 //
 //        if (database != null)
